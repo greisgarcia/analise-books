@@ -13,11 +13,16 @@ price_min = df_top100_books["book price"].min()
 year_min = df_top100_books["year of publication"].min()
 year_max = df_top100_books["year of publication"].max()
 
+rating_min = df_top100_books["rating"].min()
+rating_max = df_top100_books["rating"].max()
+
 max_price = st.sidebar.slider("Price Range", price_min, price_max, price_max)
 max_year = st.sidebar.slider("Year Range", year_min, year_max, year_max)
+max_rating = st.sidebar.slider("Rating Range", rating_min, rating_max, rating_max)
 
 df_books = df_top100_books[df_top100_books["book price"] <= max_price]
 df_books = df_books[df_books["year of publication"] <= max_year]
+df_books = df_books[df_books["book price"] <= max_rating]
 
 df_books
 
